@@ -14,11 +14,11 @@ jobs:
 
     - name: Update frontend image tag
       run: |
-        sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/menn-frontend:.*|image: ${{ secrets.DOCKER_USERNAME }}/menn-frontend:${{ github.event.client_payload.sha }}|" k8s/frontend-deployment.yaml
+        sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/menn-frontend:.*|image: ${{ secrets.DOCKER_USERNAME }}/menn-frontend:${{ github.event.client_payload.sha }}|" k8s/frontend.yaml
 
     - name: Update backend image tag
       run: |
-        sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/menn-backend:.*|image: ${{ secrets.DOCKER_USERNAME }}/menn-backend:${{ github.event.client_payload.sha }}|" k8s/backend-deployment.yaml
+        sed -i "s|image: ${{ secrets.DOCKER_USERNAME }}/menn-backend:.*|image: ${{ secrets.DOCKER_USERNAME }}/menn-backend:${{ github.event.client_payload.sha }}|" k8s/backend.yaml
 
     - name: Commit and push changes
       run: |
