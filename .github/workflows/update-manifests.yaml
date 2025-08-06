@@ -1,5 +1,8 @@
 name: Update Kubernetes Manifests on Image Push
 
+permissions:
+  contents: write
+
 on:
   repository_dispatch:
     types: [update-manifests]
@@ -27,5 +30,6 @@ jobs:
         git add .
         git commit --allow-empty -m "Update image tags to ${{ github.event.client_payload.sha }}"
         git push
+
 
 
