@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-container
+          image: anonymous40/auth-backend:a.3  
+          ports:
+            - containerPort: 8000
+          env:
+            - name: PORT
+              value: "8000"
+            - name: DATABASE_URL
+              value: "mongodb://mongodb-service:27017/passportjsauth?directConnection=true&serverSelectionTimeoutMS=5000"
+            - name: SALT
+              value: "10"
+            - name: EMAIL_HOST
+              value: "smtp.gmail.com"
+            - name: EMAIL_PORT
+              value: "587"
+            - name: EMAIL_USER
+              value: "40hemantsingh40@gmail.com"
+            - name: EMAIL_PASS
+              value: "mtzophcjhhticwkf"
+            - name: EMAIL_FROM
+              value: "40hemantsingh40@gmail.com"
+            - name: JWT_ACCESS_TOKEN_SECRET_KEY
+              value: "fsdfsdjlkj32423klf8789"
+            - name: JWT_REFRESH_TOKEN_SECRET_KEY
+              value: "4534fsdfsdgfhfghe5"
+            - name: FRONTEND_HOST
+              value: "http://authentication.local"
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
+
