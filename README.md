@@ -4,7 +4,9 @@
 
 ## 1.1 Overview
 
-This repository contains **Kubernetes manifests only** for deploying a simple **microservices-based application**. The focus is on **infrastructure, orchestration, and deployment design**, not application source code.
+This repository contains Kubernetes manifests only for deploying a simple microservices-based application. The focus is on infrastructure, orchestration, and deployment design, not application source code.
+
+The Kubernetes cluster was provisioned on an in-situ instance using a K3s (lightweight Kubernetes) cluster, chosen for efficient resource usage and simplified cluster management while retaining full Kubernetes API compatibility.
 
 ### 1.1.1 Tags
 
