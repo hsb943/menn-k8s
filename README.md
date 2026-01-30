@@ -189,17 +189,9 @@ Why this order:
 
 ### 8.1 Screenshots Location
 
-```
-screenshots/
-```
+<img width="953" height="524" alt="updated-manifest-action" src="https://github.com/user-attachments/assets/415bad91-84ea-4a04-a1af-6cb7fc769d94" />
 
-### 8.2 Recommended Screenshots
 
-1. `kubectl get pods`
-2. `kubectl get svc`
-3. `kubectl get ingress`
-4. Browser access via Ingress
-5. GitHub Actions workflow run
 
 ---
 
