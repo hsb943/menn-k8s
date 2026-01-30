@@ -11,7 +11,7 @@ This repository contains **Kubernetes manifests only** for deploying a simple **
 * Kubernetes (K8s)
 * Docker (container images)
 * GitHub Actions
-* GitOps
+* GitOps using ArgoCD
 * Kubernetes Deployments
 * Kubernetes Services (ClusterIP)
 * Kubernetes Ingress
@@ -151,15 +151,31 @@ Why this order:
 
 ### 6.1 GitHub Actions Workflow
 
-1. Tracks manifest changes
-2. Validates infra updates via Git
-3. Designed to integrate with GitOps tools
+1. Tracks manifest changes in Git
+2. Acts as the trigger point for GitOps flow
+3. Keeps Git as the single source of truth
 
-### 6.2 Why GitOps-Compatible
+### 6.2 Argo CD Integration (Active)
 
-* Declarative YAML
-* No manual cluster mutation
-* Clean diff-based changes
+1. Argo CD continuously watches this repository
+2. Any YAML change is automatically detected
+3. Drift between desired state (Git) and live cluster is reconciled
+4. No manual `kubectl apply` required after initial bootstrap
+
+Why Argo CD was chosen:
+
+* Pull-based deployment model (more secure)
+* Automatic drift detection
+* Clear separation between CI (build/update) and CD (sync/apply)
+* Flow:
+1. Developer updates Kubernetes manifests
+2. Changes are committed and pushed to Git
+3. Git acts as the authoritative desired state
+4. Argo CD continuously monitors the Git repository
+5. Argo CD compares desired state with live cluster state
+6. Drift is detected automatically
+7. Argo CD applies changes to the Kubernetes cluster
+8. Reconciliation continues until desired state is enforced
 
 ---
 
@@ -189,12 +205,39 @@ Why this order:
 
 ### 8.1 Screenshots Location
 
-<img width="953" height="524" alt="updated-manifest-action" src="https://github.com/user-attachments/assets/415bad91-84ea-4a04-a1af-6cb7fc769d94" />
+```
+screenshots/
+```
 
+<img width="1164" height="622" alt="user-interface-browser" src="https://github.com/user-attachments/assets/f031496f-ec78-4302-a621-428ddda2af0b" />
+
+<img width="953" height="524" alt="updated-manifest-action" src="https://github.com/user-attachments/assets/87a8fbd3-f6e7-4280-9233-1fac2ff64f26" />
 
 
 ---
 
-## 9. License
+## 9. Observability & Monitoring
+
+### 9.1 Monitoring Stack (Installed on Cluster)
+
+1. Prometheus
+
+   * Metrics collection from Kubernetes components
+   * Resource-level visibility (CPU, memory)
+
+2. Grafana
+
+   * Dashboards for cluster and workload monitoring
+   * Visualization of Prometheus metrics
+
+Why this stack:
+
+* De-facto standard for Kubernetes observability
+* Cloud-agnostic and production-proven
+* Works seamlessly with Kubernetes
+
+---
+
+## 10. License
 
 MIT
