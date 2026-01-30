@@ -195,16 +195,6 @@ Why this order:
 
 ---
 
-## 9. Future Improvements
-
-1. Convert MongoDB to StatefulSet
-2. Add resource requests and limits
-3. Introduce ConfigMaps and Secrets
-4. Add liveness and readiness probes
-5. Integrate fully with Argo CD
-
----
-
-## 10. License
+## 9. License
 
 MIT
