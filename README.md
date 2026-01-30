@@ -45,6 +45,9 @@ Why this approach:
 
 ## 2. System Architecture
 
+<img width="319" height="882" alt="whole-architecture" src="https://github.com/user-attachments/assets/c1e4689e-6926-4880-a043-4dc66ba68261" />
+
+
 ### 2.1 High-Level Flow
 
 ```
