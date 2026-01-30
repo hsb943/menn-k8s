@@ -208,9 +208,10 @@ Why Argo CD was chosen:
 ```
 screenshots/
 ```
-
+Browser Access
 <img width="1164" height="622" alt="user-interface-browser" src="https://github.com/user-attachments/assets/f031496f-ec78-4302-a621-428ddda2af0b" />
 
+Github Actios updated update-manifests.yaml
 <img width="953" height="524" alt="updated-manifest-action" src="https://github.com/user-attachments/assets/87a8fbd3-f6e7-4280-9233-1fac2ff64f26" />
 
 
